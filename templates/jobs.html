@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Jobs - Jovian Careers{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="container">
+        <h1>Current Openings</h1>
+        <p>Find your next career opportunity with us</p>
+    </div>
+</div>
+
+<div class="jobs-section">
+    <div class="container">
+        {% if jobs %}
+            <div class="jobs-grid">
+                {% for job in jobs %}
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3>{{ job.title }}</h3>
+                        <span class="job-type">{{ job.type }}</span>
+                    </div>
+                    <div class="job-details">
+                        <p class="job-department">{{ job.department }}</p>
+                        <p class="job-location">📍 {{ job.location }}</p>
+                        <p class="job-description">{{ job.description }}</p>
+                    </div>
+                    <div class="job-actions">
+                        <button class="apply-button">Apply Now</button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="no-jobs">
+                <p>No current openings. Check back soon!</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
